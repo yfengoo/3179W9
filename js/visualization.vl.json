@@ -68,7 +68,7 @@
           "type": "quantitative",
           "scale": {
             "type": "linear",
-            "domainMin": 1,
+            "domain": [1, 200],
             "reverse": true,
             "range": ["#fee0d2", "#de2d26"]
           },
