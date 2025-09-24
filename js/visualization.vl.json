@@ -1,0 +1,86 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Peak Rank of Selected Songs Globally (Spotify Top 200)",
+  "width": 800,
+  "height": 400,
+  "projection": {"type": "equalEarth"},
+  "params": [
+    {
+      "name": "Song_title",
+      "value": "Golden",
+      "bind": {
+        "input": "select",
+        "name": "Song title",
+        "options": [
+          "No Broke Boys",
+          "Ordinary",
+          "Your Idol",
+          "undressed",
+          "Golden",
+          "DAISIES",
+          "How It’s Done",
+          "Eternity",
+          "What It Sounds Like",
+          "The Subway",
+          "Man I Need",
+          "Tears",
+          "Manchild",
+          "12 to 12",
+          "Soda Pop",
+          "back to friends"
+        ]
+      }
+    }
+  ],
+  "layer": [
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/yfengoo/3179W9/refs/heads/main/js/ne_110m_countries.json",
+        "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
+      },
+      "mark": {"type": "geoshape", "fill": "lightgrey", "stroke": "white"}
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/yfengoo/3179W9/refs/heads/main/data/global_chart.csv"
+      },
+      "transform": [
+        {"filter": "datum.Song == Song_title"},
+        {
+          "lookup": "Country",
+          "from": {
+            "data": {
+              "url": "https://raw.githubusercontent.com/yfengoo/3179W9/refs/heads/main/js/ne_110m_countries.json",
+              "format": {
+                "type": "topojson",
+                "feature": "ne_110m_admin_0_countries"
+              }
+            },
+            "key": "properties.NAME",
+            "fields": ["type", "properties", "geometry"]
+          }
+        }
+      ],
+      "mark": {"type": "geoshape"},
+      "encoding": {
+        "color": {
+          "field": "Peak",
+          "type": "quantitative",
+          "scale": {
+            "type": "linear",
+            "domainMin": 1,
+            "reverse": true,
+            "range": ["#fee0d2", "#de2d26"]
+          },
+          "legend": {"title": "Peak rank"}
+        },
+        "tooltip": [
+          {"field": "Country", "title": "Country"},
+          {"field": "Song", "title": "Song"},
+          {"field": "Peak", "type": "quantitative", "title": "Peak rank"}
+        ]
+      }
+    }
+  ],
+  "config": {}
+}
