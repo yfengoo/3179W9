@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": {"text": {"expr": "'Peak Rank Globally in Spotify of ' + Song_title"}, "fontSize": 16},
+  "title": {"text": {"expr": "'Peak Rank Globally in Spotify of Selected Song:' + Song_title"}, "fontSize": 16},
   "width": 800,
   "height": 400,
   "projection": {"type": "equalEarth"},
