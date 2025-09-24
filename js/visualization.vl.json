@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": {"text": {"expr": "'Global Peak Rankings of Australia Top 10 Songs (Spotify Top 200):' + Song_title"}, "fontSize": 16},
+  "title": {"text": {"expr": "'Global Peak Rankings of Australia Top 10 Songs (Spotify Top 200) : ' + Song_title"}, "fontSize": 16},
   "width": 800,
   "height": 400,
   "projection": {"type": "equalEarth"},
