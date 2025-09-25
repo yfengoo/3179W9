@@ -38,7 +38,13 @@
         "url": "https://raw.githubusercontent.com/yfengoo/3179W9/refs/heads/main/js/ne_110m_countries.json",
         "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
       },
-      "mark": {"type": "geoshape", "fill": "lightgrey", "stroke": "white"}
+      "transform": [
+        {"calculate": "'Data is not available in ' + datum.properties.NAME", "as": "note"}
+      ],
+      "mark": {"type": "geoshape", "fill": "lightgrey", "stroke": "white"},
+      "encoding": {
+        "tooltip": {"field": "note"}
+      }
     },
     {
       "data": {
